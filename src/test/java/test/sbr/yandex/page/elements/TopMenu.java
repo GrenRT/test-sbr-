@@ -9,4 +9,9 @@ public class TopMenu {
     public void openItem(String itemName) {
         Selenide.$(String.format("[data-department='%s']", itemName)).click();
     }
+
+    public <T> T openItem(Class<T> clazz, String itemName) {
+        Selenide.$(String.format("[data-department='%s']", itemName)).click();
+        return Selenide.page(clazz);
+    }
 }
