@@ -3,16 +3,16 @@ package test.sbr.yandex.appmanager;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import test.sbr.yandex.page.ComputerTehPage;
+import test.sbr.yandex.page.ItemListPage;
 import test.sbr.yandex.page.MainPage;
 import test.sbr.yandex.page.MarketPage;
-import test.sbr.yandex.page.NotebookPage;
 
 import static com.codeborne.selenide.Selenide.close;
 
 public class ApplicationManager {
     private MainPage mainPage;
     private MarketPage marketPage;
-    private NotebookPage notebookPage;
+    private ItemListPage itemListPage;
     private ComputerTehPage computerTehPage;
 
     private String browser;
@@ -39,14 +39,14 @@ public class ApplicationManager {
         return computerTehPage;
     }
 
-    public NotebookPage getNotebookPage() {
-        if (notebookPage == null)
-            notebookPage = Selenide.page(NotebookPage.class);
-        return notebookPage;
+    public ItemListPage getItemListPage() {
+        if (itemListPage == null)
+            itemListPage = Selenide.page(ItemListPage.class);
+        return itemListPage;
     }
 
     public void init() {
-        Configuration.timeout = 5000;
+        Configuration.timeout = 10000;
         Configuration.browser = browser;
         Selenide.open("https://yandex.ru/");
     }

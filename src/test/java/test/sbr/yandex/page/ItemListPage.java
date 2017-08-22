@@ -8,17 +8,18 @@ import test.sbr.yandex.page.elements.Filter;
 
 import java.util.List;
 
-public class NotebookPage {
+public class ItemListPage extends BasePage {
 
     private Filter filter = Selenide.page(Filter.class);
 
-    public NotebookPage fillFilterForm(FilterData filterData) {
+    public ItemListPage fillFilterForm(FilterData filterData) {
         filter.fillForm(filterData);
         return this;
     }
 
-    public void setupFilter() {
+    public ItemListPage setupFilter() {
         filter.setupFilter();
+        return this;
     }
 
     public int getCountSnippetCard() {
