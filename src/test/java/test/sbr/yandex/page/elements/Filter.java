@@ -13,9 +13,9 @@ public class Filter extends BaseHelper {
     private SelenideElement from;
     @FindBy(xpath = "//span[@data-filter='glf,priceto,var']//input")
     private SelenideElement to;
-    @FindBy(xpath = "//button/span[@text='Ещё']")
+    @FindBy(xpath = "//button[@data-bem='{\"button\":{\"type\":\"all\"}}']")
     private SelenideElement more;
-    @FindBy(xpath = "//input[@class='input__control']")
+    @FindBy(xpath = "(//div[@class='n-filter-panel-aside__content']//input[@class='input__control'])[3]")
     private SelenideElement manufacturerSearch;
 
     public Filter setPriceFrom(String priceFrom) {
@@ -39,10 +39,9 @@ public class Filter extends BaseHelper {
         } else {
             more.click();
             type(manufacturerSearch, manufacturer);
-            Selenide.$("label.checkbox__label")
-                    .shouldHave(Condition.text(manufacturer))
+            Selenide.$$("label.checkbox__label")
+                    .find(Condition.text(manufacturer))
                     .click();
-            Selenide.$("span.input__clear").click();
         }
         return this;
     }

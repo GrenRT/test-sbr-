@@ -2,10 +2,7 @@ package test.sbr.yandex.appmanager;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import test.sbr.yandex.page.ComputerTehPage;
-import test.sbr.yandex.page.ItemListPage;
-import test.sbr.yandex.page.MainPage;
-import test.sbr.yandex.page.MarketPage;
+import test.sbr.yandex.page.*;
 
 import static com.codeborne.selenide.Selenide.close;
 
@@ -14,6 +11,7 @@ public class ApplicationManager {
     private MarketPage marketPage;
     private ItemListPage itemListPage;
     private ComputerTehPage computerTehPage;
+    private ProductSummaryPage productSummaryPage;
 
     private String browser;
 
@@ -43,6 +41,12 @@ public class ApplicationManager {
         if (itemListPage == null)
             itemListPage = Selenide.page(ItemListPage.class);
         return itemListPage;
+    }
+
+    public ProductSummaryPage getProductSummaryPage() {
+        if (productSummaryPage == null)
+            productSummaryPage = Selenide.page(ProductSummaryPage.class);
+        return productSummaryPage;
     }
 
     public void init() {

@@ -10,7 +10,7 @@ public class BaseHelper {
             String existingText = element.getAttribute("value");
             if (!text.equals(existingText)) {
                 element.clear();
-                element.sendKeys(text);
+                element.setValue(text);
             }
         }
     }

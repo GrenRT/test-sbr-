@@ -23,16 +23,16 @@ public class MarketTests extends TestBase {
                 .fillFilterForm(filterTest1)
                 .setupFilter();
 
-        Assert.assertEquals(12, app.getItemListPage().getCountSnippetCard());
+        Assert.assertEquals(10, app.getItemListPage().getCountSnippetCard());
 
         SnippetCardData firstResult = app.getItemListPage().getSnippetCardData(0);
 
         app.getItemListPage()
                 .startSearch(firstResult.getModel());
 
-        SnippetCardData searchResult = app.getItemListPage().getSnippetCardData(0);
+        SnippetCardData searchResult = app.getProductSummaryPage().getSnippetCardData();
 
-        Assert.assertEquals(firstResult, searchResult);
+        Assert.assertEquals(firstResult.getModel(), searchResult.getModel());
     }
 
     @Test
@@ -49,8 +49,8 @@ public class MarketTests extends TestBase {
         app.getItemListPage()
                 .startSearch(firstResult.getModel());
 
-        SnippetCardData searchResult = app.getItemListPage().getSnippetCardData(0);
+        SnippetCardData searchResult = app.getProductSummaryPage().getSnippetCardData();
 
-        Assert.assertEquals(firstResult, searchResult);
+        Assert.assertEquals(firstResult.getModel(), searchResult.getModel());
     }
 }
