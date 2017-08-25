@@ -3,11 +3,11 @@ package test.sbr.yandex.page.elements;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import test.sbr.yandex.appmanager.BaseHelper;
 import test.sbr.yandex.model.FilterData;
 
-@FindBy(xpath = "//div[@class='n-filter-panel-aside__content']")
 public class Filter extends BaseHelper {
     @FindBy(xpath = "//span[@data-filter='glf,pricefrom,var']//input")
     private SelenideElement from;
@@ -15,8 +15,6 @@ public class Filter extends BaseHelper {
     private SelenideElement to;
     @FindBy(xpath = "//button[@data-bem='{\"button\":{\"type\":\"all\"}}']")
     private SelenideElement more;
-    @FindBy(xpath = "(//div[@class='n-filter-panel-aside__content']//input[@class='input__control'])[3]")
-    private SelenideElement manufacturerSearch;
 
     public Filter setPriceFrom(String priceFrom) {
         type(from, priceFrom);
@@ -35,10 +33,13 @@ public class Filter extends BaseHelper {
                 Selenide.$$("label.checkbox__label").find(Condition.text(manufacturer));
 
         if (item.exists()) {
-            Selenide.$$("label.checkbox__label").find(Condition.text(manufacturer)).click();
+            item.click();
         } else {
             more.click();
-            type(manufacturerSearch, manufacturer);
+            SelenideElement manufacturerSearch =
+                    Selenide.$(By.xpath("(//div[@class='n-filter-panel-aside__content']//input[@class='input__control'])[3]"));
+            manufacturerSearch.shouldBe(Condition.focused).setValue(manufacturer);
+//            type(manufacturerSearch, manufacturer);
             Selenide.$$("label.checkbox__label")
                     .find(Condition.text(manufacturer))
                     .click();

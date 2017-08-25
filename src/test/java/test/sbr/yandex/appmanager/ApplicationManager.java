@@ -50,7 +50,7 @@ public class ApplicationManager {
     }
 
     public void init() {
-        Configuration.timeout = 10000;
+        Configuration.timeout = 15000;
         Configuration.browser = browser;
         Selenide.open("https://yandex.ru/");
     }

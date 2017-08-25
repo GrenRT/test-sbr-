@@ -8,7 +8,7 @@ import test.sbr.yandex.page.ComputerTehPage;
 import test.sbr.yandex.page.ItemListPage;
 
 
-public class MarketTests extends TestBase {
+public class TestMarket extends TestBase {
 
 
     protected String[] manufacturer1 = {"HP", "Lenovo"};
@@ -23,7 +23,7 @@ public class MarketTests extends TestBase {
                 .fillFilterForm(filterTest1)
                 .setupFilter();
 
-        Assert.assertEquals(10, app.getItemListPage().getCountSnippetCard());
+        Assert.assertEquals(12, app.getItemListPage().getCountSnippetCard());
 
         SnippetCardData firstResult = app.getItemListPage().getSnippetCardData(0);
 
@@ -42,7 +42,7 @@ public class MarketTests extends TestBase {
                 .fillFilterForm(filterTest2)
                 .setupFilter();
 
-        Assert.assertEquals(10, app.getItemListPage().getCountSnippetCard());
+        Assert.assertEquals(12, app.getItemListPage().getCountSnippetCard());
 
         SnippetCardData firstResult = app.getItemListPage().getSnippetCardData(0);
 
